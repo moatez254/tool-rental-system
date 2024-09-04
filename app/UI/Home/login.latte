@@ -1,0 +1,37 @@
+{block content}
+<div class="login-container">
+    <div class="login-box">
+        <h1>Login</h1>
+        <form n:name="loginForm" method="post">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" n:name="login" class="login-button">Login</button>
+        </form>
+    </div>
+</div>
+ <script>
+    function adjustLoginBoxSize() {
+        const loginBox = document.querySelector('.login-box');
+        const viewportWidth = window.innerWidth;
+
+        if (viewportWidth < 480) {
+            loginBox.style.width = '90%';
+            loginBox.style.padding = '40px';   
+            loginBox.style.width = '80%';
+        } else {
+            loginBox.style.width = '400px';   
+        }
+    }
+ 
+    window.addEventListener('resize', adjustLoginBoxSize);
+    window.addEventListener('load', adjustLoginBoxSize);
+</script>
+{/block}
+
+

@@ -1,0 +1,34 @@
+ {block content}
+<h1>Borrowed Tools</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tool</th>
+            <th>User</th>
+            <th>Borrow Date</th>
+            <th>Expected Return Date</th>
+            <th>Actual Return Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $borrowRecords as $record}
+            <tr>
+                <td>{$record->tool->name}</td>
+                <td>{$record->user->username}</td>
+                <td>{$record->borrow_date|date:'Y-m-d'}</td>
+                <td>{$record->expected_return_date|date:'Y-m-d'}</td>
+                <td>{$record->actual_return_date|date:'Y-m-d' ?? '-'}</td>
+                <td>{$record->status}</td>
+                <td>
+                    {if $record->status == 'borrowed'}
+                        <a n:href="return id={$record->id}">Return</a>
+                    {/if}
+                </td>
+            </tr>
+        {/foreach}
+    </tbody>
+</table>
+{/block}
